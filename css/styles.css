@@ -2,8 +2,7 @@
    MIRA WASTE — v3 Refined & Contained
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Inter:ital,wght@0,300;0,400;0,500;1,300&family=Space+Mono:wght@400&display=swap');
-
+/* Fonts loaded via <link> in HTML head for better performance */
 :root {
   --bg-deep:    #060d18;
   --bg-mid:     #091221;
