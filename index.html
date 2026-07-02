@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <title>MIRA WASTE — Monitoreo Inteligente de Residuos Acopiados</title>
+  <meta name="description" content="MIRA WASTE transforma la gestión municipal de residuos: de la estimación visual a la evidencia medida. Contenedores inteligentes, plataforma digital y cobro respaldado por datos."/>
+  <meta name="keywords" content="MIRA WASTE, residuos municipales, monitoreo inteligente, sobreproducción, derecho de aseo, contenedores inteligentes, Replantea Tech, economía circular Chile"/>
+  <meta name="author" content="Replantea Tech SpA"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://mirawaste.cl/"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://mirawaste.cl/"/>
+  <meta property="og:title" content="MIRA WASTE — Monitoreo Inteligente de Residuos"/>
+  <meta property="og:description" content="De la estimación a la evidencia. Plataforma de monitoreo de residuos para municipios chilenos."/>
+  <meta property="og:image" content="https://mirawaste.cl/img/og-cover.jpg"/>
+  <meta property="og:locale" content="es_CL"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="MIRA WASTE — Monitoreo Inteligente de Residuos"/>
+  <meta name="twitter:description" content="Contenedores inteligentes y plataforma digital para cobro justo en municipios de Chile."/>
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg"/>
+  <meta name="theme-color" content="#060d18"/>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"MIRA WASTE","alternateName":"Replantea Tech SpA","url":"https://mirawaste.cl","description":"Plataforma de monitoreo inteligente de residuos para municipios chilenos."}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="stylesheet" href="css/styles.css"/>
+</head>
+<body>
+
+<canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+<!-- NAV -->
+<nav class="nav" role="navigation" aria-label="Navegación principal">
+  <a href="#hero" class="nav-logo" aria-label="MIRA WASTE inicio">
+    <div class="logo-mark" aria-hidden="true">
+      <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="13" cy="13" r="10" stroke="#00bcd4" stroke-width="1"/>
+        <circle cx="13" cy="13" r="2.5" fill="#00bcd4"/>
+        <line x1="7" y1="13" x2="4" y2="13" stroke="#00bcd4" stroke-width="1" stroke-linecap="round"/>
+        <line x1="19" y1="13" x2="22" y2="13" stroke="#00bcd4" stroke-width="1" stroke-linecap="round"/>
+        <line x1="13" y1="7" x2="13" y2="4" stroke="#00bcd4" stroke-width="1" stroke-linecap="round"/>
+        <line x1="13" y1="19" x2="13" y2="22" stroke="#00bcd4" stroke-width="1" stroke-linecap="round"/>
+        <rect x="10" y="10" width="3" height="3" rx="0.5" stroke="#00bcd4" stroke-width="0.8"/>
+        <rect x="13" y="13" width="3" height="3" rx="0.5" stroke="#00bcd4" stroke-width="0.8"/>
+      </svg>
+    </div>
+    MIRA&nbsp;<span>WASTE</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#problema">Problema</a></li>
+    <li><a href="#solucion">Solución</a></li>
+    <li><a href="#impacto">Impacto</a></li>
+    <li><a href="#equipo">Equipo</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+  </ul>
+  <a href="https://wa.me/56912345678?text=Hola%20MIRA%20WASTE%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20la%20plataforma" target="_blank" rel="noopener" class="nav-cta" aria-label="Contactar por WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" width="12" height="12" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.533 5.859L.05 23.268a.5.5 0 0 0 .611.637l5.543-1.467A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.718 9.718 0 0 1-4.998-1.378l-.358-.212-3.292.871.884-3.218-.232-.371A9.714 9.714 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
+    Contactar
+  </a>
+  <button class="hamburger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu">
+  <a href="#problema">Problema</a>
+  <a href="#solucion">Solución</a>
+  <a href="#impacto">Impacto</a>
+  <a href="#equipo">Equipo</a>
+  <a href="#roadmap">Roadmap</a>
+  <a href="#contacto">Contacto</a>
+</div>
+
+<!-- HERO -->
+<section id="hero" aria-label="Inicio">
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="badge-dot" aria-hidden="true"></span>
+      APTA Woman Power 2026 · Innovo USACH
+    </div>
+    <h1 class="hero-title"><span class="m">MIRA</span>&nbsp;<span class="w">WASTE</span></h1>
+    <p class="hero-tag">Monitoreo Inteligente de Residuos Acopiados</p>
+    <p class="hero-desc"><span id="hero-typing"></span><span class="cursor" aria-hidden="true"></span></p>
+    <div class="hero-actions">
+      <a href="#solucion" class="btn-p">
+        Ver solución
+        <svg viewBox="0 0 20 20" fill="currentColor" width="13" height="13" aria-hidden="true"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+      </a>
+      <a href="#contacto" class="btn-s">Hablar con el equipo</a>
+    </div>
+    <div class="hero-stats" aria-label="Estadísticas clave">
+      <div class="hstat">
+        <div class="val" data-target="472" data-prefix="US$" data-suffix="MM">—</div>
+        <div class="lbl">Gasto anual en residuos municipales</div>
+      </div>
+      <div class="hstat">
+        <div class="val" data-target="6.3" data-float="true" data-suffix="x">—</div>
+        <div class="lbl">Potencial de recaudación</div>
+      </div>
+      <div class="hstat">
+        <div class="val" data-target="54" data-suffix="%">—</div>
+        <div class="lbl">Comunas RM cobran sobreproducción</div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-ind" aria-hidden="true">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROBLEMA -->
+<section id="problema" class="section" aria-labelledby="prob-title">
+  <p class="eyebrow">01 — El Problema</p>
+  <h2 id="prob-title" class="sec-title reveal">¿Un hogar genera lo mismo<br>que un <em>supermercado</em>?</h2>
+  <p class="prob-q reveal d1">Todos utilizan el mismo servicio de recolección y pagan el mismo derecho de aseo. Pero cuando algunos generan <strong>mucho más</strong> que otros, el sistema falla.</p>
+
+  <div class="waste-grid" role="list">
+    <div class="wtype reveal d1" role="listitem">
+      <div class="wtype-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
+      <h3>Hogar</h3>
+      <div class="bins"><div class="bin on"></div></div>
+    </div>
+    <div class="wtype reveal d2" role="listitem">
+      <div class="wtype-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0H5m-2 0h2M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+      </div>
+      <h3>Farmacia</h3>
+      <div class="bins"><div class="bin on"></div><div class="bin on"></div></div>
+    </div>
+    <div class="wtype reveal d3" role="listitem">
+      <div class="wtype-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+      </div>
+      <h3>Carnicería</h3>
+      <div class="bins"><div class="bin on"></div><div class="bin on"></div><div class="bin on"></div></div>
+    </div>
+    <div class="wtype reveal d4" role="listitem">
+      <div class="wtype-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+      </div>
+      <h3>Supermercado</h3>
+      <div class="bins"><div class="bin on"></div><div class="bin on"></div><div class="bin on"></div><div class="bin on"></div><div class="bin on"></div></div>
+    </div>
+  </div>
+
+  <div class="prob-insight reveal">
+    <p>Si todos pagan lo mismo… ¿Qué ocurre cuando algunos generan <strong>mucho más</strong> que otros?</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- REALIDAD -->
+<section id="realidad" class="section" aria-labelledby="real-title">
+  <p class="eyebrow">02 — La Realidad Hoy</p>
+  <h2 id="real-title" class="sec-title reveal">Gestión de residuos:<br>uno de los <em>mayores costos</em> municipales</h2>
+  <div class="r-grid">
+    <div class="r-hero reveal">
+      <div class="num" data-target="472" data-prefix="US$" data-suffix=" MM">—</div>
+      <div class="numlbl">Gasto municipal anual en gestión de residuos (2023)</div>
+      <div class="src">Fuente: ACHM y Kyklos, Radiografía de Residuos Domiciliarios Municipales 2023</div>
+    </div>
+    <div class="issues-card reveal d2">
+      <h4>En la práctica hoy</h4>
+      <div class="issue">
+        <div class="i-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <span>Fiscalización puntual y estimación visual</span>
+      </div>
+      <div class="issue">
+        <div class="i-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+        <span>Cobros sin respaldo de datos</span>
+      </div>
+      <div class="issue">
+        <div class="i-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <span>Desigualdad y pérdida de recursos</span>
+      </div>
+      <div class="issue">
+        <div class="i-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <span>Sin trazabilidad ni historial verificable</span>
+      </div>
+    </div>
+  </div>
+  <div class="r-bottom">
+    <div class="law-card reveal">
+      <h4>La ley tiene una alternativa</h4>
+      <div class="law-item">Derecho de Aseo base para todos los predios</div>
+      <div class="law-item">Franquicia hasta 60 litros promedio diario</div>
+      <div class="law-item">Exceso de generación identificable</div>
+      <div class="law-item">El municipio <strong>puede cobrar sobreproducción</strong> (Art. 7° D.L. 3.063)</div>
+    </div>
+    <div class="stat54-card reveal d2">
+      <div class="s54" data-target="54" data-suffix="%">—</div>
+      <div class="s54-txt">de las comunas de la Región Metropolitana cobra sobreproducción.<br><span style="color:var(--white-35);font-size:0.68rem;">Fuente: Datos públicos municipales 2024</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CIFRAS -->
+<section id="cifras" class="section" aria-labelledby="cifras-title">
+  <p class="eyebrow">03 — La Realidad en Cifras</p>
+  <h2 id="cifras-title" class="sec-title reveal">¿Cuánto están dejando<br>de <em>recaudar</em> los municipios?</h2>
+  <p class="sec-sub reveal d1">Caso Cerro Navia — proyección basada en datos públicos municipales 2024.</p>
+  <div class="cifras-grid" style="margin-top:36px;">
+    <div class="cmp-rows">
+      <div class="col-hdr"><span class="col-lbl">Situación actual</span><span class="col-lbl">Potencial estimado</span></div>
+      <div class="cmp-row reveal">
+        <div class="ccell full"><div class="clbl">Patentes comerciales vigentes</div><div class="cval" data-target="1712">—</div></div>
+      </div>
+      <div class="cmp-row reveal d1">
+        <div class="ccell"><div class="clbl">Sobreproductores actuales</div><div class="cval" data-target="95">—</div><div class="cdsc">registrados</div></div>
+        <div class="ccell pot"><div class="clbl">Potenciales sobreproductores</div><div class="cval" data-target="986">—</div><div class="cdsc">sin medir</div></div>
+      </div>
+      <div class="cmp-row reveal d2">
+        <div class="ccell"><div class="clbl">Recaudación actual</div><div class="cval">$7MM</div><div class="cdsc">por mes</div></div>
+        <div class="ccell pot"><div class="clbl">Recaudación potencial</div><div class="cval">$43,9MM</div><div class="cdsc">por mes</div></div>
+      </div>
+    </div>
+    <div class="cifras-hl reveal d2">
+      <div class="hl-eyebrow">Caso piloto</div>
+      <div class="hl-name">Cerro Navia</div>
+      <div class="hl-multi" data-target="6.3" data-float="true" data-suffix="x">—</div>
+      <div class="hl-lbl">más de recaudación<br>respecto a la situación actual</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SOLUCIÓN -->
+<section id="solucion" class="section" aria-labelledby="sol-title">
+  <p class="eyebrow">04 — La Solución</p>
+  <h2 id="sol-title" class="sec-title reveal"><em>MIRA WASTE</em><br>Medimos donde hoy se estima</h2>
+  <p class="sol-tag reveal d1">Un sistema end-to-end que convierte residuos en <em>datos verificables</em> y cobros respaldados.</p>
+
+  <div class="pipeline" aria-label="Proceso MIRA WASTE">
+    <div class="pstep reveal">
+      <div class="pstep-dot" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+      </div>
+      <div class="pstep-n">Paso 1</div>
+      <div class="pstep-t">Generación</div>
+      <div class="pstep-d">El sobreproductor deposita sus residuos en el Contenedor MIRA</div>
+    </div>
+    <div class="pstep reveal d1">
+      <div class="pstep-dot" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <div class="pstep-n">Paso 2</div>
+      <div class="pstep-t">Medición</div>
+      <div class="pstep-d">Sensores registran el nivel de llenado en tiempo real</div>
+    </div>
+    <div class="pstep reveal d2">
+      <div class="pstep-dot" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <div class="pstep-n">Paso 3</div>
+      <div class="pstep-t">Registro</div>
+      <div class="pstep-d">Sensores + imagen + algoritmos validan automáticamente</div>
+    </div>
+    <div class="pstep reveal d3">
+      <div class="pstep-dot" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <div class="pstep-n">Paso 4</div>
+      <div class="pstep-t">Trazabilidad</div>
+      <div class="pstep-d">Información en la plataforma para cobro respaldado</div>
+    </div>
+  </div>
+
+  <div class="flow-eq reveal">Generación → Medición → Registro → Trazabilidad <em>= COBRO RESPALDADO</em></div>
+
+  <div class="profiles-grid">
+    <div class="prof-card reveal">
+      <div class="prof-hd">
+        <div class="prof-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h.01M15 9h.01M9 15h.01M15 15h.01"/></svg></div>
+        <div><div class="prof-title">Municipio</div><div class="prof-sub">Cobra con evidencia</div></div>
+      </div>
+      <div class="prof-feat">Cobros respaldados con datos verificables</div>
+      <div class="prof-feat">Reportes y analítica territorial</div>
+      <div class="prof-feat">Historial completo por sobreproductor</div>
+      <div class="prof-feat">Gestión y optimización de rutas</div>
+    </div>
+    <div class="prof-card reveal d2">
+      <div class="prof-hd">
+        <div class="prof-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0H5m-2 0h2"/></svg></div>
+        <div><div class="prof-title">Sobreproductor</div><div class="prof-sub">Paga con evidencia</div></div>
+      </div>
+      <div class="prof-feat">Conoce su generación real de residuos</div>
+      <div class="prof-feat">Accede a historial de trazabilidad</div>
+      <div class="prof-feat">Entiende exactamente qué se le cobra</div>
+      <div class="prof-feat">Oportunidad de reducir costos</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- DIFERENCIADORES -->
+<section id="diferenciadores" class="section" aria-labelledby="diff-title">
+  <p class="eyebrow">05 — ¿Por qué somos diferentes?</p>
+  <h2 id="diff-title" class="sec-title reveal">Del cobro por estimación<br>al cobro por <em>evidencia</em></h2>
+  <div class="diff-grid">
+    <div class="diff-col today reveal">
+      <div class="diff-hd">Hoy</div>
+      <div class="diff-item"><div class="d-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>Inspector municipal</div>
+      <div class="diff-item"><div class="d-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>Estimación visual</div>
+      <div class="diff-item"><div class="d-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>Registro manual</div>
+      <div class="diff-item"><div class="d-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>Cobro sin evidencia</div>
+      <div class="diff-ft">Estimación</div>
+    </div>
+    <div class="diff-col future reveal d2">
+      <div class="diff-hd">Futuro con MIRA</div>
+      <div class="diff-item"><div class="d-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="3"/><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/></svg></div>Contenedor inteligente</div>
+      <div class="diff-item"><div class="d-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>Medición automática</div>
+      <div class="diff-item"><div class="d-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>Registro digital</div>
+      <div class="diff-item"><div class="d-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>Historial verificable</div>
+      <div class="diff-item"><div class="d-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"/></svg></div>Cobro respaldado</div>
+      <div class="diff-ft">Evidencia</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- IMPACTO -->
+<section id="impacto" class="section" aria-labelledby="imp-title">
+  <p class="eyebrow">06 — Impacto</p>
+  <h2 id="imp-title" class="sec-title reveal">Una solución,<br><em>tres impactos</em></h2>
+  <div class="impact-grid">
+    <article class="imp-card reveal">
+      <div class="imp-img" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h.01M15 9h.01M9 15h.01M15 15h.01"/></svg>
+      </div>
+      <div class="imp-body">
+        <div class="imp-title">Municipalidad</div>
+        <div class="imp-feat">Mayor recaudación basada en datos reales</div>
+        <div class="imp-feat">Transparencia en el proceso de cobro</div>
+        <div class="imp-feat">Gestión optimizada de recursos y rutas</div>
+        <div class="imp-feat">Mayor alcance territorial</div>
+      </div>
+    </article>
+    <article class="imp-card reveal d2">
+      <div class="imp-img" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0H5m-2 0h2M9 7h1m-1 4h1m4-4h1m-1 4h1"/></svg>
+      </div>
+      <div class="imp-body">
+        <div class="imp-title">Sobreproductor</div>
+        <div class="imp-feat">Conoce su generación real de residuos</div>
+        <div class="imp-feat">Accede a historial completo</div>
+        <div class="imp-feat">Sabe exactamente qué se le cobra</div>
+        <div class="imp-feat">Oportunidad de reducir generación</div>
+      </div>
+    </article>
+    <article class="imp-card reveal d3">
+      <div class="imp-img" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+      </div>
+      <div class="imp-body">
+        <div class="imp-title">Territorio</div>
+        <div class="imp-feat">Economía Circular en acción</div>
+        <div class="imp-feat">Sistema de cobro justo y equitativo</div>
+        <div class="imp-feat">Información para políticas públicas</div>
+        <div class="imp-feat">Sostenibilidad financiera municipal</div>
+      </div>
+    </article>
+  </div>
+  <div class="impact-chain reveal">
+    <div class="ic-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>Más datos</div>
+    <span class="ic-arrow">→</span>
+    <div class="ic-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Más transparencia</div>
+    <span class="ic-arrow">→</span>
+    <div class="ic-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>Mejores decisiones</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ROADMAP -->
+<section id="roadmap" class="section" aria-labelledby="rd-title">
+  <p class="eyebrow">07 — Hoja de Ruta</p>
+  <h2 id="rd-title" class="sec-title reveal">Del <em>MVP</em> a<br>implementación comercial</h2>
+  <div class="tl-bar" aria-hidden="true">
+    <div class="tl-node done"><div class="tl-dot"></div><div class="tl-lbl">Semilla<br>CORFO</div></div>
+    <div class="tl-node done"><div class="tl-dot"></div><div class="tl-lbl">TRL 5<br>MVP</div></div>
+    <div class="tl-node now"><div class="tl-dot"></div><div class="tl-lbl">Jul 2026<br>Validación</div></div>
+    <div class="tl-node"><div class="tl-dot"></div><div class="tl-lbl">Piloto<br>Municipal</div></div>
+    <div class="tl-node"><div class="tl-dot"></div><div class="tl-lbl">Ajustes<br>HW+SW</div></div>
+    <div class="tl-node"><div class="tl-dot"></div><div class="tl-lbl">TRL 6<br>Validado</div></div>
+    <div class="tl-node"><div class="tl-dot"></div><div class="tl-lbl">Impl.<br>Comercial</div></div>
+  </div>
+  <div class="rd-phases">
+    <div class="rd-card done reveal">
+      <div class="rd-tag">✓ Completado</div>
+      <div class="rd-title">Lo que tenemos</div>
+      <div class="rd-item"><span class="rd-dot"></span>Financiamiento CORFO adjudicado</div>
+      <div class="rd-item"><span class="rd-dot"></span>MVP desarrollado (TRL 5)</div>
+      <div class="rd-item"><span class="rd-dot"></span>Hardware funcional</div>
+      <div class="rd-item"><span class="rd-dot"></span>Plataforma municipal operativa</div>
+      <div class="rd-item"><span class="rd-dot"></span>Plataforma sobreproductor lista</div>
+    </div>
+    <div class="rd-card now reveal d2">
+      <div class="rd-tag">⚡ En curso — APTA 2026</div>
+      <div class="rd-title">Lo que validaremos</div>
+      <div class="rd-item"><span class="rd-dot"></span>Precisión de medición</div>
+      <div class="rd-item"><span class="rd-dot"></span>Robustez de captura de imágenes</div>
+      <div class="rd-item"><span class="rd-dot"></span>Conectividad y transmisión</div>
+      <div class="rd-item"><span class="rd-dot"></span>Experiencia de usuario</div>
+      <div class="rd-item"><span class="rd-dot"></span>Operación municipal real</div>
+    </div>
+    <div class="rd-card next reveal d3">
+      <div class="rd-tag">→ Próximo</div>
+      <div class="rd-title">Resultado esperado</div>
+      <div class="rd-item"><span class="rd-dot"></span>Sistema validado en entorno operativo</div>
+      <div class="rd-item"><span class="rd-dot"></span>Avance de TRL 5 a TRL 6</div>
+      <div class="rd-item"><span class="rd-dot"></span>Primer caso de negocio municipal</div>
+      <div class="rd-item"><span class="rd-dot"></span>Preparación escalamiento comercial</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- MODELO -->
+<section id="modelo" class="section" aria-labelledby="mod-title">
+  <p class="eyebrow">08 — Modelo de Ingresos</p>
+  <h2 id="mod-title" class="sec-title reveal">Estructura alineada<br>a los <em>incentivos</em></h2>
+  <div class="modelo-grid">
+    <div class="mod-card reveal">
+      <div class="mod-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+      <div class="mod-type">Tarifa Fija Mensual</div>
+      <div class="mod-title">Acceso a la plataforma MIRA</div>
+      <div class="mod-feat">Dashboard de gestión integral</div>
+      <div class="mod-feat">Reportes y analítica avanzada</div>
+      <div class="mod-feat">Historial y trazabilidad completa</div>
+      <div class="mod-feat">Gestión de cobros automatizada</div>
+      <div class="mod-feat">Soporte y mantención incluidos</div>
+      <div class="mod-badge">Pago mensual fijo</div>
+    </div>
+    <div class="mod-card reveal d2">
+      <div class="mod-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+      <div class="mod-type">Tarifa Variable</div>
+      <div class="mod-title">Infraestructura desplegada</div>
+      <div class="mod-feat">Por cantidad de contenedores MIRA instalados</div>
+      <div class="mod-feat">Cobertura operacional del territorio</div>
+      <div class="mod-feat">Mantenimiento de hardware incluido</div>
+      <div class="mod-badge">Pago por contenedor instalado</div>
+    </div>
+    <div class="mod-card reveal d3">
+      <div class="mod-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+      <div class="mod-type">Participación sobre Resultados</div>
+      <div class="mod-title">Valor recuperado compartido</div>
+      <div class="mod-feat">Porcentaje de ingresos generados</div>
+      <div class="mod-feat">Incentivos perfectamente alineados</div>
+      <div class="mod-feat">Modelo de riesgo compartido</div>
+      <div class="mod-badge">% del valor recuperado</div>
+    </div>
+  </div>
+  <div class="mod-flow reveal">
+    <span class="mf-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>Municipalidad</span>
+    <span class="mf-arr">→</span>
+    <span class="mf-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg><em>Recupera recursos</em></span>
+    <span class="mf-arr">→</span>
+    <span class="mf-item">MIRA WASTE</span>
+    <span class="mf-arr">→</span>
+    <span class="mf-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg><em>Participa del ingreso</em></span>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EQUIPO -->
+<section id="equipo" class="section" aria-labelledby="eq-title">
+  <p class="eyebrow">09 — El Equipo</p>
+  <h2 id="eq-title" class="sec-title reveal">Construimos desde la<br><em>experiencia municipal</em></h2>
+  <div class="team-grid">
+    <div class="tm-card reveal">
+      <div class="tm-av" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>
+      <div class="tm-name">Leticia Rebolledo</div>
+      <div class="tm-role">Ing. Ambiental · Directora</div>
+      <div class="tm-skill">Gestión de residuos</div>
+      <div class="tm-skill">Economía Circular</div>
+    </div>
+    <div class="tm-card reveal d1">
+      <div class="tm-av" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>
+      <div class="tm-name">Sacha Besoain</div>
+      <div class="tm-role">Geógrafa</div>
+      <div class="tm-skill">Análisis territorial</div>
+      <div class="tm-skill">Gestión de contratos</div>
+    </div>
+    <div class="tm-card reveal d2">
+      <div class="tm-av" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>
+      <div class="tm-name">Camila Arancibia</div>
+      <div class="tm-role">Ing. de Transporte</div>
+      <div class="tm-skill">Operación</div>
+      <div class="tm-skill">Contratos de recolección</div>
+    </div>
+    <div class="tm-card reveal d1">
+      <div class="tm-av" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>
+      <div class="tm-name">M. Cristina Catalán</div>
+      <div class="tm-role">Ing. Civil Industrial</div>
+      <div class="tm-skill">Escalamiento comercial</div>
+      <div class="tm-skill">Gestión de datos</div>
+    </div>
+    <div class="tm-card reveal d2">
+      <div class="tm-av" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>
+      <div class="tm-name">Carolina Vallejos</div>
+      <div class="tm-role">Diseñadora Industrial</div>
+      <div class="tm-skill">Adaptación de equipamiento</div>
+      <div class="tm-skill">Diseño funcional</div>
+    </div>
+    <div class="tm-card reveal d3">
+      <div class="tm-av" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>
+      <div class="tm-name">José Castillo</div>
+      <div class="tm-role">CTO</div>
+      <div class="tm-skill">Desarrollo tecnológico</div>
+      <div class="tm-skill">Supervisión de sistemas</div>
+    </div>
+  </div>
+  <div class="tech-p reveal">
+    <span class="tp-lbl">Socios Tecnológicos</span>
+    <div class="tp-div" aria-hidden="true"></div>
+    <div class="tp"><div class="tp-name">&gt;.labs</div><div class="tp-desc">Desarrollo tecnológico especializado</div></div>
+    <div class="tp-div" aria-hidden="true"></div>
+    <div class="tp"><div class="tp-name">Innovo USACH</div><div class="tp-desc">Patrocinio institucional</div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACTO -->
+<section id="contacto" class="section" aria-labelledby="ct-title">
+  <div class="ct-inner">
+    <p class="eyebrow" style="justify-content:center;">10 — Contacto</p>
+    <h2 id="ct-title" class="ct-title reveal">Si lo podemos <em>medir</em>,<br>lo podemos <em>cobrar</em>.</h2>
+    <p class="ct-desc reveal d1">¿Tu municipio quiere dejar de estimar y empezar a medir? Conversemos. El equipo está disponible para explorar pilotos y alianzas.</p>
+    <div class="ct-channels reveal d2">
+      <a href="https://wa.me/56912345678?text=Hola%20MIRA%20WASTE%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20la%20plataforma" target="_blank" rel="noopener" class="ct-btn wa" aria-label="Contactar por WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.533 5.859L.05 23.268a.5.5 0 0 0 .611.637l5.543-1.467A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.718 9.718 0 0 1-4.998-1.378l-.358-.212-3.292.871.884-3.218-.232-.371A9.714 9.714 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/></svg>
+        WhatsApp
+      </a>
+      <a href="mailto:hola@mirawaste.cl?subject=Me%20interesa%20MIRA%20WASTE" class="ct-btn em" aria-label="Enviar correo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+        Email
+      </a>
+      <a href="https://linkedin.com/company/mirawaste" target="_blank" rel="noopener" class="ct-btn li" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+    </div>
+    <p class="ct-note reveal">Replantea Tech SpA · Con patrocinio de <a href="https://innovo.usach.cl" target="_blank" rel="noopener">Innovo USACH</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-brand">MIRA&nbsp;<span>WASTE</span></div>
+  <div class="ft-meta">Monitoreo Inteligente de Residuos Acopiados<br>© 2026 Replantea Tech SpA</div>
+  <div class="ft-legal">Patrocinio <a href="https://innovo.usach.cl" target="_blank" rel="noopener">Innovo USACH</a></div>
+</footer>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
