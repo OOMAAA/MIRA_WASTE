@@ -239,6 +239,25 @@
 })();
 
 
+/* ── Scroll tracker ── */
+(function initScrollTracker() {
+  const tracker = document.querySelector('.scroll-tracker');
+  const fill    = document.getElementById('scroll-fill');
+  const pct     = document.getElementById('scroll-pct');
+  if (!tracker || !fill || !pct) return;
+
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    const total    = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = total > 0 ? Math.min(scrolled / total, 1) : 0;
+    const pctVal   = Math.round(progress * 100);
+
+    fill.style.height   = (progress * 100) + '%';
+    pct.textContent     = pctVal + '%';
+    tracker.classList.toggle('visible', scrolled > 120);
+  }, { passive: true });
+})();
+
 /* ── Smooth scroll for all anchor links ── */
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
